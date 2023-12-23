@@ -46,8 +46,9 @@ module.exports = defineConfig({
         getUserEmail() {
           return emailAccount.user;
         },
-        getLastEmail() {
-          return emailAccount.getLastEmail();
+        getLastEmail(params) {
+          console.log(params);
+          return emailAccount.getLastEmail(params);
         },
         getLastEmailFromMailRu() {
           return emailAccount.getLastEmailFromMailRu();
