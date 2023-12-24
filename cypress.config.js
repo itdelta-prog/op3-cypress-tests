@@ -13,6 +13,7 @@ module.exports = defineConfig({
     authPassword: process.env.QA_TEST_PASSWORD,
     password: process.env.PASSWORD,
     mailRuEmail: process.env.QA_TEST_LOGIN,
+    mailTrapToken: process.env.MAIL_TRAP_TOKEN,
     courseGroupName: "QA Test Course Group",
     curriculumName: "QA Test Curriculum",
     courseName: "QA Test Course",
@@ -47,7 +48,6 @@ module.exports = defineConfig({
           return emailAccount.user;
         },
         getLastEmail(params) {
-          console.log(params);
           return emailAccount.getLastEmail(params);
         },
         getLastEmailFromMailRu() {
