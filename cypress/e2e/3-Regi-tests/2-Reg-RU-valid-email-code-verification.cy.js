@@ -23,7 +23,7 @@ describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () =
         cy.xpath("//input[@id='email']", {timeout: 10000}).type(userEmail);
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
-        cy.wait(1000);
+        cy.wait(3000);
         cy.contains('Верификация');
         cy.task('getLastEmail', {user: userEmail, pass: pass,}).its('html').then(($html) => {
                 var doc = new DOMParser().parseFromString($html, "text/html");

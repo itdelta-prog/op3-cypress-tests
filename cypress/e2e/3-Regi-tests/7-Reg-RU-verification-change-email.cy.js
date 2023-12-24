@@ -1,8 +1,7 @@
 const {recurse} = require("cypress-recurse");
-describe('4-Reg-RU-invalid-code.cy.js', () => {
+describe('7-Reg-RU-verification-change-email.cy.js', () => {
     let userEmail;
     let pass;
-    let invalid_code = '0000';
 
     before(() => {
         cy.task("getUserEmail").then((user) => {
@@ -20,17 +19,17 @@ describe('4-Reg-RU-invalid-code.cy.js', () => {
         cy.wait(1000);
     });
 
-    it('valid-email-registration-open-courses', function () {
+    it('valid-email-code-confirmation', function () {
         cy.xpath("//input[@id='email']", {timeout: 10000}).type(userEmail);
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(3000);
         cy.contains('Верификация');
-        cy.wait(1000);
-        cy.xpath("//input[@id='code']", {timeout: 10000}).type(invalid_code);
-        cy.wait(1000);
-        cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
-        cy.wait(1000);
-        cy.contains('Выбранное значение для Код некорректно.').should('be.visible');
+        cy.contains('Сменить адрес почты').should('be.visible').click();
+        cy.wait(3000);
+        cy.xpath("//input[@id='email']", {timeout: 10000}).should('be.visible');
+        cy.xpath("//button[@type='submit']", { timeout: 10000 }).should('be.visible');
+        cy.contains('Регистрация');
+        cy.contains('Первые 14-дней бесплатно');
     });
 })
