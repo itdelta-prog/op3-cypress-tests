@@ -1,7 +1,11 @@
 const {recurse} = require("cypress-recurse");
-describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () => {
+describe('3-Reg-RU-valid-email-registration-open-courses.cy.js.cy.js', () => {
     let userEmail;
     let pass;
+    let name = 'test_name';
+    let last_name = 'test_last_name';
+    let test_password = 'test_last_password';
+    let wrong_password = 'wrong_wrong_wrong_wrong';
 
     before(() => {
         cy.task("getUserEmail").then((user) => {
@@ -19,7 +23,7 @@ describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () =
         cy.wait(1000);
     });
 
-    it('valid-email-code-confirmation', function () {
+    it('valid-email-registration-open-courses', function () {
         cy.xpath("//input[@id='email']", {timeout: 10000}).type(userEmail);
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
@@ -34,9 +38,16 @@ describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () =
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(1000);
         cy.contains('Регистрация');
-        cy.xpath("//input[@type='name']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='last_name']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='password']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='password_confirmation']", { timeout: 10000 }).should('be.visible');
+        cy.xpath("//input[@id='name']", { timeout: 10000 }).should('be.visible').type(name);
+        cy.wait(1000);
+        cy.xpath("//input[@id='last_name']", { timeout: 10000 }).should('be.visible').type(last_name);
+        cy.wait(1000);
+        cy.xpath("//input[@id='password']", { timeout: 10000 }).should('be.visible').type(test_password);
+        cy.wait(1000);
+        cy.xpath("//input[@id='password_confirmation']", { timeout: 10000 }).should('be.visible').type(test_password);
+        cy.wait(1000);
+        cy.xpath("//button[@type='submit']", { timeout: 10000 }).should('be.visible').click();
+        cy.wait(5000);
+        cy.contains("Добавить курс").should('be.visible');
     });
 })

@@ -1,7 +1,8 @@
 const {recurse} = require("cypress-recurse");
-describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () => {
+describe('4-Reg-RU-invalid-code.cy.js', () => {
     let userEmail;
     let pass;
+    let invalid_code = '0000';
 
     before(() => {
         cy.task("getUserEmail").then((user) => {
@@ -19,24 +20,17 @@ describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () =
         cy.wait(1000);
     });
 
-    it('valid-email-code-confirmation', function () {
+    it('valid-email-registration-open-courses', function () {
         cy.xpath("//input[@id='email']", {timeout: 10000}).type(userEmail);
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(1000);
         cy.contains('Верификация');
-        cy.task('getLastEmail', {user: userEmail, pass: pass,}).its('html').then(($html) => {
-                var doc = new DOMParser().parseFromString($html, "text/html");
-                let midText = doc.querySelector("p").innerText;
-            cy.xpath("//input[@id='code']", {timeout: 10000}).type(midText.match(/[0-9]+/g)[0]);
-            });
+        cy.wait(1000);
+        cy.xpath("//input[@id='code']", {timeout: 10000}).type(invalid_code);
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(1000);
-        cy.contains('Регистрация');
-        cy.xpath("//input[@type='name']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='last_name']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='password']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='password_confirmation']", { timeout: 10000 }).should('be.visible');
+        cy.contains('Выбранное значение для Код некорректно.').should('be.visible');
     });
 })
