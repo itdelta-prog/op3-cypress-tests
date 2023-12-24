@@ -1,4 +1,4 @@
-const {recurse} = require("cypress-recurse");
+
 describe('3-Reg-RU-valid-email-registration-open-courses.cy.js.cy.js', () => {
     let userEmail;
     let pass;

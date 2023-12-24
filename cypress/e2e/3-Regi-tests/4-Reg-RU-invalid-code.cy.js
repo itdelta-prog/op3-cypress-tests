@@ -1,4 +1,4 @@
-const {recurse} = require("cypress-recurse");
+
 describe('4-Reg-RU-invalid-code.cy.js', () => {
     let userEmail;
     let pass;
@@ -29,8 +29,10 @@ describe('4-Reg-RU-invalid-code.cy.js', () => {
         cy.wait(1000);
         cy.xpath("//input[@id='code']", {timeout: 10000}).type(invalid_code);
         cy.wait(1000);
+        cy.task('getLastEmail', {user: userEmail, pass: pass,}); // проверяем почту чтобы следующая проверка видела правильный код
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(1000);
         cy.contains('Выбранное значение для Код некорректно.').should('be.visible');
+
     });
 })

@@ -1,4 +1,4 @@
-const {recurse} = require("cypress-recurse");
+
 describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () => {
     let userEmail;
     let pass;
@@ -34,9 +34,9 @@ describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () =
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(1000);
         cy.contains('Регистрация');
-        cy.xpath("//input[@type='name']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='last_name']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='password']", { timeout: 10000 }).should('be.visible');
-        cy.xpath("//input[@type='password_confirmation']", { timeout: 10000 }).should('be.visible');
+        cy.xpath("//input[@id='name']", { timeout: 10000 }).should('be.visible');
+        cy.xpath("//input[@id='last_name']", { timeout: 10000 }).should('be.visible');
+        cy.xpath("//input[@id='password']", { timeout: 10000 }).should('be.visible');
+        cy.xpath("//input[@id='password_confirmation']", { timeout: 10000 }).should('be.visible');
     });
 })

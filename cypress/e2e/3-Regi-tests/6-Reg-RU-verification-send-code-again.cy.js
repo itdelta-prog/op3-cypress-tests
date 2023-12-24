@@ -25,7 +25,7 @@ describe('2-Regi-RU-valid-email-code-verification-open-registration.cy.js', () =
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(3000);
         cy.contains('Верификация');
-        cy.task('getLastEmail', {user: userEmail, pass: pass,});
+        cy.task('getLastEmail', {user: userEmail, pass: pass,}); // проверяем почту чтобы следующая проверка видела правильный код
         cy.wait(70000);
         cy.contains("Отправить код повторно").should('be.visible').click();
         cy.wait(3000);

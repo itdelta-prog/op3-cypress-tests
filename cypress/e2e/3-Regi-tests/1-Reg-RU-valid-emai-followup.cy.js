@@ -34,7 +34,7 @@ describe('1-Regi-RU-valid-email-followup.cy.js', () => {
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(3000);
-        cy.task('getLastEmail', {user: userEmail, pass: pass,});
+        cy.task('getLastEmail', {user: userEmail, pass: pass,}); // проверяем почту чтобы следующая проверка видела правильный код
         cy.contains('Верификация');
         //cy.contains("Ссылка для сброса пароля электронной почты").should('be.visible').click();
         //cy.wait(1000);

@@ -24,6 +24,7 @@ describe('7-Reg-RU-verification-change-email.cy.js', () => {
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(3000);
+        cy.task('getLastEmail', {user: userEmail, pass: pass,}); // проверяем почту чтобы следующая проверка видела правильный код
         cy.contains('Верификация');
         cy.contains('Сменить адрес почты').should('be.visible').click();
         cy.wait(3000);
