@@ -1,7 +1,8 @@
+require('dotenv').config();
 const { defineConfig } = require("cypress");
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 const makeEmailAccount = require('./cypress/support/email-account new');
-require('dotenv').config();
+
 
 module.exports = defineConfig({
   chromeWebSecurity: false,
@@ -36,6 +37,7 @@ module.exports = defineConfig({
   viewportWidth: 800,
   e2e: {
     baseUrl: process.env.PRODUCTION_URL,
+    landingUrl: process.env.LANDING_URL,
     registerUrl: process.env.REGISTER_URL,
     setupNodeEvents: async (on, config) => {
   
@@ -47,9 +49,6 @@ module.exports = defineConfig({
         },
         getLastEmail(params) {
           return emailAccount.getLastEmail(params);
-        },
-        getLastEmailFromMailRu() {
-          return emailAccount.getLastEmailFromMailRu();
         },
         sendEmail() {
           return emailAccount.sendEmail();

@@ -1,6 +1,6 @@
 describe('LA2. Land-RU-read-more-study', () => {
     before(() => {
-        cy.visit(Cypress.env('landingUrl'));
+            cy.visit(Cypress.config().landingUrl);
     });
 
     it('should click study button', function () {

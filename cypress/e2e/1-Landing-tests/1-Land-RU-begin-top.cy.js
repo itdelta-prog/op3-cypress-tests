@@ -1,6 +1,6 @@
 describe('LA1. Land-RU-begin-top', () => {
     before(() => {
-        cy.visit(Cypress.env('landingUrl'));
+        cy.visit(Cypress.config().landingUrl);
     });
 
     it('should click top begin button', function () {

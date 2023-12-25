@@ -1,8 +1,8 @@
 const {recurse} = require("cypress-recurse");
 describe('4-Auth-RU-forgot-password.cy.js', () => {
     beforeEach(() => {
-        cy.visit('login');
-        cy.wait(1000);
+        cy.visit(Cypress.config().baseUrl);
+        cy.wait(3000);
         cy.get('[id="headlessui-menu-button-:r0:"]').click();
         cy.wait(1000);
         // Switch to RU

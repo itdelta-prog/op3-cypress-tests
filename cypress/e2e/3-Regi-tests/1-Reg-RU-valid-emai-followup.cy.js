@@ -14,8 +14,10 @@ describe('1-Regi-RU-valid-email-followup.cy.js', () => {
             pass = user.pass;
             //userName = user.email.replace("@ethereal.email", "");
         })
-        cy.visit('https://app.org-online.ru/register');
-        cy.wait(1000);
+        cy.visit(Cypress.config().landingUrl);
+        cy.wait(3000);
+        cy.get('a[href*="register"]').eq(1).should('be.visible').click();
+        cy.wait(3000);
         cy.get('[id="headlessui-menu-button-:r0:"]').click();
         cy.wait(1000);
         // Switch to RU
@@ -24,20 +26,11 @@ describe('1-Regi-RU-valid-email-followup.cy.js', () => {
     });
 
     it('valid-email-input', function () {
-        //const email = Cypress.env('authEmail');
-
-        //cy.contains("Забыли пароль?").should('be.visible').click();
-
-        //cy.wait(65000); //временное решение - org-online.ru высылает письмо сброса пароля  с ограничением, 1 раз в минуту
-
         cy.xpath("//input[@id='email']", {timeout: 10000}).type(userEmail);
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).click();
         cy.wait(3000);
-        cy.task('getLastEmail', {user: userEmail, pass: pass,}); // проверяем почту чтобы следующая проверка видела правильный код
+        cy.task('getLastEmail', {user: userEmail, pass: pass,}); // проверяем почту чтобы следующая проверка нашла правильный код
         cy.contains('Верификация');
-        //cy.contains("Ссылка для сброса пароля электронной почты").should('be.visible').click();
-        //cy.wait(1000);
-        //cy.contains("Ссылка на сброс пароля была отправлена!").should('be.visible');
     });
 })

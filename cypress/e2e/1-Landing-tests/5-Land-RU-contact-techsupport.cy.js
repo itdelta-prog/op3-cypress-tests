@@ -1,6 +1,6 @@
 describe('LA5. Land-RU-contact-techsupport', () => {
     before(() => {
-        cy.visit(Cypress.env('landingUrl'));
+            cy.visit(Cypress.config().landingUrl);
     });
 
     it('Click contact tech-support to check for modal box', function () {

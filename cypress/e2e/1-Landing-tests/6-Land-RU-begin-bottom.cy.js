@@ -1,6 +1,6 @@
 describe('LA6. Land-RU-begin-bottom', () => {
     before(() => {
-        cy.visit(Cypress.env('landingUrl'));
+            cy.visit(Cypress.config().landingUrl);
     });
     it('should click bottom begin button', function () {
         cy.wait(2000);

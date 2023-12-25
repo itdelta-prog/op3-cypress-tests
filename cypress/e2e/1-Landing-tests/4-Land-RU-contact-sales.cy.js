@@ -1,6 +1,6 @@
 describe('LA4. Land-RU-contact-sales', () => {
     before(() => {
-        cy.visit(Cypress.env('landingUrl'));
+            cy.visit(Cypress.config().landingUrl);
     });
 
     it("Click contact sales to check for modal box", function () {

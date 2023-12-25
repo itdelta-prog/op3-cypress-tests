@@ -1,8 +1,8 @@
 const {recurse} = require("cypress-recurse");
 describe('5-Auth-RU-forgot-password-valid-mail-link.cy.js', () => {
     before(() => {
-        cy.visit('login');
-        cy.wait(1000);
+        cy.visit(Cypress.config().baseUrl);
+        cy.wait(3000);
         cy.get('[id="headlessui-menu-button-:r0:"]').click();
         cy.wait(1000);
         // Switch to RU

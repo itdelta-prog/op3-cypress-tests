@@ -1,6 +1,6 @@
 describe('LA3. Land-RU-read-more-reglaments', () => {
     before(() => {
-        cy.visit(Cypress.env('landingUrl'));
+            cy.visit(Cypress.config().landingUrl);
     });
 
     it('should move to login page', function () {

@@ -10,8 +10,10 @@ describe('7-Reg-RU-verification-change-email.cy.js', () => {
             userEmail = user.email;
             pass = user.pass;
         })
-        cy.visit('https://app.org-online.ru/register');
-        cy.wait(1000);
+        cy.visit(Cypress.config().landingUrl);
+        cy.wait(3000);
+        cy.get('a[href*="register"]').eq(1).should('be.visible').click();
+        cy.wait(3000);
         cy.get('[id="headlessui-menu-button-:r0:"]').click();
         cy.wait(1000);
         // Switch to RU
