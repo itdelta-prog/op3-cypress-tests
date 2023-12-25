@@ -47,7 +47,7 @@ describe('3-Reg-RU-valid-email-registration-open-courses.cy.js.cy.js', () => {
         cy.xpath("//input[@id='password_confirmation']", { timeout: 10000 }).should('be.visible').type(test_password);
         cy.wait(1000);
         cy.xpath("//button[@type='submit']", { timeout: 10000 }).should('be.visible').click();
-        cy.wait(5000);
+        cy.wait(10000);
         cy.contains("Добавить курс").should('be.visible');
     });
 })
