@@ -65,10 +65,11 @@ describe('LC.Z. Clear all created learning items', () => {
 
     it('delete invite user', function() {
         cy.visit('/admin/user');
-        cy.accessAllItems();
 
-        cy.contains(userEmail).parent().parent().last().find('div').last().click();
-        cy.wait(1500);
+        cy.contains(userEmail).parent().parent().last().scrollIntoView().find('.tooltip').last().click();
+        cy.wait(500)
+        cy.get('button').contains('Delete').click();
+        cy.xpath("//p[text()='Success!']").should('be.visible');
     })
 
 });
