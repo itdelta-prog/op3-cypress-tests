@@ -16,10 +16,10 @@ describe('1-Regi-RU-valid-email-followup.cy.js', () => {
         })
         cy.visit(Cypress.config().registerUrl);
         cy.wait(3000);
-        cy.get('[id="headlessui-menu-button-:r0:"]').click();
-        cy.wait(1000);
         // Switch to RU
-        cy.get('[id="headlessui-menu-item-:r4:"]').click();
+        cy.xpath('/html/body/div[2]/div/nav/div/div/div[2]/div/div/button').click();
+        cy.wait(1000);
+        cy.xpath('/html/body/div[2]/div/nav/div/div/div[2]/div/div[2]/a[2]').click();
         cy.wait(1000);
     });
 
