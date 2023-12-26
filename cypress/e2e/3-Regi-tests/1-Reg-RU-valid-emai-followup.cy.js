@@ -14,9 +14,7 @@ describe('1-Regi-RU-valid-email-followup.cy.js', () => {
             pass = user.pass;
             //userName = user.email.replace("@ethereal.email", "");
         })
-        cy.visit(Cypress.config().landingUrl);
-        cy.wait(3000);
-        cy.get('a[href*="register"]').eq(1).should('be.visible').click();
+        cy.visit(Cypress.config().registerUrl);
         cy.wait(3000);
         cy.get('[id="headlessui-menu-button-:r0:"]').click();
         cy.wait(1000);
