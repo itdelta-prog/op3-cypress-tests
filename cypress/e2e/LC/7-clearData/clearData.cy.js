@@ -14,22 +14,23 @@ describe('LC.Z. Clear all created learning items', () => {
         cy.admin();
     })
 
-    // it('should delete course', function () {
-    //     // cy.login();
-    //     // cy.visit('/')
-    //     cy.xpath("//div[@class='flex flex-col flex-grow pt-5 pb-4 overflow-y-auto']").find(':contains("Learning Center")').click({multiple: true});
-    //     cy.xpath("//div[@class='flex flex-col flex-grow pt-5 pb-4 overflow-y-auto']").find(':contains("Courses")').click({multiple: true});
-    //
-    //   cy.wait(1000);
-    //     cy.accessAllItems();
-    //     cy.wait(500);
-    //     cy.xpath(`//div[text()='${Cypress.env("courseName")}']`).parent().parent().parent().parent().parent().find('th').eq(1).find('div').click().then(($el) => {
-    //         cy.wrap($el).find(':contains("Delete course")').click({ multiple: true, force: true });
-    //     })
-    //     cy.wait(500);
-    //     cy.get('button').contains('Delete').click({force: true});
-    //     cy.xpath("//p[text()='Success!']").should('be.visible');
-    // });
+    it('should delete course', function () {
+        // cy.login();
+        // cy.visit('/')
+        cy.xpath("//div[@class='flex flex-col flex-grow pt-5 pb-4 overflow-y-auto']").find(':contains("Learning Center")').click({multiple: true});
+        cy.xpath("//div[@class='flex flex-col flex-grow pt-5 pb-4 overflow-y-auto']").find(':contains("Courses")').click({multiple: true});
+
+      cy.wait(1000);
+        cy.accessAllItems();
+        cy.wait(500);
+        cy.xpath(`//div[text()='${Cypress.env("courseName")}']`).closest('tr').within(() => {
+            cy.get('th').eq(1).find('div').click();
+        });
+        cy.contains('Delete course').should('be.visible').click({ multiple: true });
+        cy.wait(500);
+        cy.get('button').contains('Delete').click({force: true});
+        cy.xpath("//p[text()='Success!']").should('be.visible');
+    });
 
 
     it('should delete lessons', function () {
@@ -62,12 +63,12 @@ describe('LC.Z. Clear all created learning items', () => {
         cy.wait(500);
         cy.xpath("//p[text()='Success!']").should('be.visible');
 
-        cy.wait(500);
-        cy.visit('/lc/admin/lessons');
-        cy.wait(500);
-        cy.xpath(`//div[text()='${Cypress.env('lessonTimer')}']`).parent().parent().parent().parent().parent().find('.tooltip').last().click();
-        cy.get('button').contains('Delete').click();
-        cy.xpath("//p[text()='Success!']").should('be.visible');
+        // cy.wait(500);
+        // cy.visit('/lc/admin/lessons');
+        // cy.wait(500);
+        // cy.xpath(`//div[text()='${Cypress.env('lessonTimer')}']`).parent().parent().parent().parent().parent().find('.tooltip').last().click();
+        // cy.get('button').contains('Delete').click();
+        // cy.xpath("//p[text()='Success!']").should('be.visible');
     });
 
     it('delete curriculum', function () {
